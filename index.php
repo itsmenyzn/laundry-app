@@ -32,6 +32,14 @@ if (isset($_SESSION['isLoginUser'])) {
 
     <!-- Custom styles for this template-->
     <link href="assets/css/sb-admin-2.min.css" rel="stylesheet" />
+    <style>
+        .mapouter {
+            position: relative;
+            text-align: right;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
 </head>
 
 <body>
@@ -87,9 +95,9 @@ if (isset($_SESSION['isLoginUser'])) {
         } ?>
         <div class="row">
             <div class="col-lg-6 textMain">
-                <h3>Title Landing Page</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum pariatur quasi nulla corporis aspernatur, iure voluptatem quia vero facilis sit quod. Magnam, eius animi. Dicta, incidunt dolorum, earum officia error voluptatum exercitationem, veritatis eos libero laudantium nesciunt maxime obcaecati quis!</p>
-                <p>Find Us On
+                <h3><b>Bali Laundry</b></h3>
+                <p>Kami Bergerak Dibidang Usaha Jasa Binatu / Laundry Di Wilayah Denpasar Bali Dan Sekitarnya, Yang Melayani Permintaan Jasa Laundry Baik Personal, Keluarga Serta Wisatawan. Kami Menawarkan Jasa Laundry Kiloan, Untuk Mempermudah Konsumen Serta Lebih Berhemat Dengan Kuantitas Pekerjaan Borongan.</p>
+                <p> <b><i>Find Us On</i></b>
                     <a href="#"><img src="assets/img/instagram_icon.png" width="30px" height="30px" class="ml-3" alt=""></a>
                     <a href="#"><img src="assets/img/facebook_icon.png" width="30px" height="30px" alt=""></a>
                     <a href="#"><img src="assets/img/whatsapp_icon.png" width="30px" height="30px" alt=""></a>
@@ -100,66 +108,107 @@ if (isset($_SESSION['isLoginUser'])) {
             </div>
         </div>
     </div>
-    <div class="container my-3" id="sectionServices">
+    <div class="container" id="sectionServices">
         <center>
-            <h3 class="my-5">Info Paket Service Laundry</h3>
+            <h3 class="mb-5">Layanan Paket Bali Laundry</h3>
         </center>
-        <div class="row d-flex marleft">
-            <div class="col-lg-4">
-                <div class="card cardServices">
-                    <div class="card-body text-center ">
-                        <img src="assets/img/express_service.png" class="kelasImage w-25 mb-4 " alt="">
-                        <p class="card-text "><b>Express </b></p>
-                        <p class="fs-6 ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore, </p>
+        <div class="row d-flex justify-content-between">
+            <div class="col-lg-3">
+                <div class="card shadow ">
+                    <div class="card-body p-4">
+                        <center>
+                            <img src="assets/img/express_service.png" class="img-fluid mt-2 mb-4 w-50 h-50" alt="">
+                            <h5 class="mt-2 mb-4">Reguler</h5>
+                            <h5 class="mb-3">Cuci - Setrika - Lipat - Pewangi</h5>
+
+                        </center>
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni
+                            fuga assumenda natus soluta aspernatur amet reprehenderit
+                            mollitia quis officiis perferendis?
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="card cardServices">
-                    <div class="card-body text-center ">
-                        <img src="assets/img/express_service.png" class="kelasImage w-25 mb-4" alt="">
-                        <p class="card-text "><b>Express </b></p>
-                        <p class="fs-6 ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore, </p>
+            <div class="col-lg-3">
+                <div class="card shadow my-4 my-lg-0 ">
+                    <div class="card-body p-4">
+                        <center>
+                            <img src="assets/img/express_service.png" class="img-fluid mt-2 mb-4 w-50 h-50" alt="">
+                            <h5 class="mt-2 mb-4">Express</h5>
+                            <h5 class="mb-3">Cuci - Setrika - Lipat</h5>
+                        </center>
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni
+                            fuga assumenda natus soluta aspernatur amet reprehenderit
+                            mollitia quis officiis perferendis?
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="card cardServices">
-                    <div class="card-body text-center ">
-                        <img src="assets/img/express_service.png" class="kelasImage w-25 mb-4" alt="">
-                        <p class="card-text "><b>Express </b></p>
-                        <p class="fs-6 ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore, </p>
+            <div class="col-lg-3">
+                <div class="card shadow ">
+                    <div class="card-body p-4">
+                        <center>
+                            <img src="assets/img/express_service.png" class="img-fluid mt-2 mb-4 w-50 h-50" alt="">
+                            <h5 class="mt-2 mb-4">Spesial</h5>
+                            <h5 class="mb-3">Cuci - Setrika - Lipat</h5>
+                        </center>
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni
+                            fuga assumenda natus soluta aspernatur amet reprehenderit
+                            mollitia quis officiis perferendis?
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container my-5" id="sectionContact">
-        <center>
-            <h1 class="my-5">Contact Us</h1>
-        </center>
-        <div class="row justify-content-center">
+    <div class="container mt-5" id="sectionContact">
+        <div class="row">
             <div class="col-lg-6">
-                <div class="card cardContact">
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <label class="textWhite" for="name">Name</label>
-                                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nama Anda...">
-                            </div>
-                            <div class="form-group">
-                                <label class="textWhite" for="email">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Email...">
-                            </div>
+                <h4 class="text-center">Kontak Bali Laundry</h4>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-1">
+                        <p><i class="fab fa-whatsapp fa-2x"></i></p>
+                        <p><i class="fab fa-whatsapp fa-2x"></i></p>
+                    </div>
+                    <div class="col-lg-11" style="line-height: 35px;">
+                        <p>081-xxx-xxxx - Admin Jono</p>
+                        <p>082-xxx-xxxx - Admin Supri</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="text-center">
+                    <h4 class="jamBukaContact" style="margin-left: -30px;">Jam Operasional</h4>
+                    <hr>
+                    <table class="table table-borderless text-center   ">
+                        <tbody class="font-weight-normal">
+                            <tr>
+                                <td>Sen - Kam:</td>
+                                <td>7.30 - 22.00</td>
+                            </tr>
+                            <tr>
+                                <td>Jum - Sab:</td>
+                                <td>08.00 - 21.00</td>
+                            </tr>
+                            <tr>
+                                <td>Minggu:</td>
+                                <td>09.00 - 18.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-6 ">
+                <h5 class="ml-5"><b>Temukan Lokasi Kami di Google Maps</b></h5>
+                <div class="mapouter">
+                    <div class="gmap_canvas me-5">
+                        <iframe width="550" height="450" id="gmap_canvas" src="https://maps.google.com/maps?q=itb%20stikom%20bali&t=k&z=19&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                        <a href="https://www.whatismyip-address.com"></a><br>
 
-                            <div class="form-group">
-                                <label class="textWhite" for="message">Message</label>
-                                <textarea class="form-control" id="message" rows="10" placeholder="Pesan Anda..."></textarea>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary px-4 py-2">Send</button>
-                        </form>
                     </div>
                 </div>
             </div>
