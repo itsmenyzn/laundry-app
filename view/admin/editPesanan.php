@@ -188,22 +188,22 @@ $row = mysqli_fetch_assoc($query);
                                     <div class="col-lg-6">
                                         <div class="form-group w-75">
                                             <label for="">Username</label>
-                                            <input type="text" value="<?= $row['username'] ?>" name="username" class="form-control">
+                                            <input type="text" readonly value="<?= $row['username'] ?>" name="username" class="form-control">
                                         </div>
                                         <div class="form-group w-75">
                                             <label for="">Telepon</label>
-                                            <input type="tel" value="<?= $row['telepon'] ?>" name="telepon" class="form-control">
+                                            <input type="tel" readonly value="<?= $row['telepon'] ?>" name="telepon" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group w-75">
                                             <label for="">Alamat</label>
-                                            <input type="text" value="<?= $row['alamat'] ?>" name="alamat" class="form-control">
+                                            <input type="text" readonly value="<?= $row['alamat'] ?>" name="alamat" class="form-control">
                                         </div>
                                         <div class="form-group w-75">
                                             <label for="">Paket</label>
 
-                                            <select class="custom-select mr-sm-2" name="paket" id="inlineFormCustomSelect">
+                                            <select id="paket" class="custom-select mr-sm-2" name="paket" id="inlineFormCustomSelect">
                                                 <option selected disabled>Pilih Paket...</option>
                                                 <?php
                                                 $sql = 'select * from tabel_paketharga';
@@ -226,13 +226,13 @@ $row = mysqli_fetch_assoc($query);
                                     <div class="col-lg-6">
                                         <div class="form-group w-75">
                                             <label for="">Berat(Kg)</label>
-                                            <input type="text" value="<?= $row['berat'] ?>" name="berat" class="form-control">
+                                            <input id="inputBerat" type="text" value="<?= $row['berat'] ?>" name="berat" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group w-75">
                                             <label for="">Harga</label>
-                                            <input type="text" value="<?= $row['harga'] ?>" name="harga" class="form-control">
+                                            <input id="inputHarga" type="text" value="<?= $row['harga'] ?>" name="harga" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -242,7 +242,7 @@ $row = mysqli_fetch_assoc($query);
                                     <div class="col-lg-6">
                                         <div class="form-group w-75">
                                             <label for="">Tanggal</label>
-                                            <input type="date" value="<?= $row['tanggal'] ?>" name="tanggal" class="form-control">
+                                            <input type="date" readonly value="<?= $row['tanggal'] ?>" name="tanggal" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -250,6 +250,10 @@ $row = mysqli_fetch_assoc($query);
                                             <label for="">Status Pesanan</label>
                                             <select class="custom-select mr-sm-2" name="status" id="inlineFormCustomSelect">
                                                 <option selected disabled>Pilih Status...</option>
+                                                <option <?php if ($row['status'] === 'Pending') {
+                                                            echo  'selected';
+                                                        }   ?> value="Pending">Pending
+                                                <option>
                                                 <option <?php if ($row['status'] === 'Belum diproses') {
                                                             echo  'selected';
                                                         }   ?> value="Belum diproses">Belum Diproses
@@ -257,6 +261,18 @@ $row = mysqli_fetch_assoc($query);
                                                 <option <?php if ($row['status'] === 'Sedang diproses') {
                                                             echo  'selected';
                                                         } ?> value="Sedang diproses">Sedang Diproses
+                                                <option>
+                                                <option <?php if ($row['status'] === 'Selesai diproses') {
+                                                            echo  'selected';
+                                                        } ?> value="Selesai diproses">Selesai Diproses
+                                                <option>
+                                                <option <?php if ($row['status'] === 'Permintaan pengantaran') {
+                                                            echo  'selected';
+                                                        } ?> value="Permintaan pengantaran">Permintaan Pengantaran
+                                                <option>
+                                                <option <?php if ($row['status'] === 'Sedang diantar') {
+                                                            echo  'selected';
+                                                        } ?> value="Sedang diantar">Sedang diantar
                                                 <option>
                                                 <option <?php if ($row['status'] === 'Selesai') {
                                                             echo  'selected';
@@ -294,6 +310,25 @@ $row = mysqli_fetch_assoc($query);
                         </div>
                     </div>
                 </div>
+
+                <script>
+                    const inputBerat = document.querySelector('#inputBerat')
+                    const inputPaket = document.querySelector('#paket')
+                    const inputHarga = document.querySelector('#inputHarga')
+                    let hargaTotal;
+                    inputBerat.addEventListener('change', (e) => {
+                        if (inputPaket.value == 'Reguler') {
+                            hargaTotal = e.target.value * 7000
+                        } else if (inputPaket.value == 'Express') {
+                            hargaTotal = e.target.value * 10000
+                        } else if (inputPaket.value == 'Spesial') {
+                            hargaTotal = e.target.value * 20000
+                        }
+                        // console.log(inputHarga)
+                        inputHarga.setAttribute('value', hargaTotal)
+                        inputHarga.setAttribute('readonly', true)
+                    })
+                </script>
                 <!-- Bootstrap core JavaScript-->
                 <script src="../../assets/vendor/jquery/jquery.min.js"></script>
                 <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

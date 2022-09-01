@@ -333,6 +333,30 @@ if (isset($_GET['deletePesananUser'])) {
         header('location:../view/user/daftarPesanan.php');
     }
 }
+if (isset($_GET['antarPesananUser'])) {
+    $id = $_GET['id'];
+    $sql = "UPDATE `tabel_pesanan` SET status = 'Permintaan pengantaran' WHERE id = '$id'";
+    $query = mysqli_query($conn, $sql);
+    if ($query) {
+        $_SESSION['pesan'] = showAlert('success', 'Berhasil Mengkonfirmasi Pengantaran Pesanan');
+        header('location:../view/user/daftarPesanan.php');
+    } else {
+        $_SESSION['pesan'] = showAlert('danger', 'Gagal Mengkonfirmasi Pengantaran Pesanan');
+        header('location:../view/user/daftarPesanan.php');
+    }
+}
+if (isset($_GET['konfirmasiPesananUser'])) {
+    $id = $_GET['id'];
+    $sql = "UPDATE `tabel_pesanan` SET status = 'Selesai' WHERE id = '$id'";
+    $query = mysqli_query($conn, $sql);
+    if ($query) {
+        $_SESSION['pesan'] = showAlert('success', 'Berhasil Menyelesaikan Pesanan');
+        header('location:../view/user/daftarPesanan.php');
+    } else {
+        $_SESSION['pesan'] = showAlert('danger', 'Gagal Menyelesaikan Pesanan');
+        header('location:../view/user/daftarPesanan.php');
+    }
+}
 
 
 if (isset($_POST['editProfileUser'])) {
