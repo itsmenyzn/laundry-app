@@ -2,6 +2,8 @@
 
 include 'connection/koneksi.php';
 session_start();
+
+// function untuk menampilkan alert pesan
 function showAlert($type, $msg)
 {
     return '<div class="alert alert-' . $type . ' alert-dismissible fade show" role="alert">
@@ -12,6 +14,7 @@ function showAlert($type, $msg)
   </div>';
 }
 
+// fitur login
 if (isset($_POST['login'])) {
     $username =  $_POST['username'];
     $password =  $_POST['password'];
@@ -44,6 +47,7 @@ if (isset($_POST['login'])) {
     }
 }
 
+// fitur register user
 if (isset($_POST['daftarUser'])) {
 
     $nama =  $_POST['nama'];
@@ -77,7 +81,7 @@ if (isset($_POST['daftarUser'])) {
     }
 }
 
-
+// fitur menambah pesanan dan validasi tanggal pesanan
 if (isset($_POST['tambahPesanan'])) {
 
     $username =  $_POST['username'];
@@ -95,7 +99,7 @@ if (isset($_POST['tambahPesanan'])) {
         $_SESSION['pesan'] = showAlert('danger', 'Gagal Membuat Pesanan ! Tanggal Tidak Valid');
         header('location:../view/admin/tambahPesanan.php');
     } else {
-        $sql = "INSERT INTO `tabel_pesanan`(`id`, `username`, `telepon`, `alamat`, `nama_paket`, `berat`, `harga`, `status`, `tanggal`) VALUES (NULL,'$username','$telepon','$alamat','$paket','$berat','$harga', 'Belum diproses' ,'$tanggal')";
+        $sql = "INSERT INTO `tabel_pesanan`(`id`, `username`, `telepon`, `alamat`, `nama_paket`, `berat`, `harga`, `status`, `tanggal`) VALUES (NULL,'$username','$telepon','$alamat','$paket','$berat','$harga', 'Pending' ,'$tanggal')";
         $query = mysqli_query($conn, $sql);
 
         if ($query) {
@@ -110,7 +114,7 @@ if (isset($_POST['tambahPesanan'])) {
     }
 }
 
-
+// fitur mengedit pesanan berdasarkan id
 if (isset($_POST['editPesanan'])) {
     $username =  $_POST['username'];
     $telepon =  $_POST['telepon'];
@@ -136,6 +140,7 @@ if (isset($_POST['editPesanan'])) {
     }
 }
 
+// fitur menghapus / membatalkan pesanan berdasarkan id
 if (isset($_GET['deletePesanan'])) {
     $id = $_GET['id'];
     $sql = "delete from tabel_pesanan where id ='$id'";
@@ -149,6 +154,7 @@ if (isset($_GET['deletePesanan'])) {
     }
 }
 
+// fitur menambah jenis paket
 if (isset($_POST['tambahPaket'])) {
     $namaPaket =  $_POST['namaPaket'];
     $lama =  $_POST['lama'];
@@ -168,7 +174,7 @@ if (isset($_POST['tambahPaket'])) {
     }
 }
 
-
+// fitur mengedit paket
 if (isset($_POST['editPaket'])) {
     $namaPaket =  $_POST['namaPaket'];
     $lama =  $_POST['lama'];
@@ -187,7 +193,7 @@ if (isset($_POST['editPaket'])) {
     }
 }
 
-
+// fitur menghapus jenis paket
 if (isset($_GET['deletePaket'])) {
     $id = $_GET['id'];
     $sql = "delete from tabel_paketHarga where id ='$id'";
@@ -201,6 +207,7 @@ if (isset($_GET['deletePaket'])) {
     }
 }
 
+// fitur menambah pengguna 
 if (isset($_POST['tambahPengguna'])) {
     $username =  $_POST['username'];
     $password =  $_POST['password'];
@@ -223,79 +230,9 @@ if (isset($_POST['tambahPengguna'])) {
     }
 }
 
-if (isset($_GET['deleteUsers'])) {
-    $id = $_GET['id'];
-    $sql = "delete from tabel_pengguna where id ='$id'";
-    $query = mysqli_query($conn, $sql);
-    if ($query) {
-        $_SESSION['pesan'] = showAlert('success', 'Berhasil Menghapus Pengguna');
-        header('location:../view/admin/daftarPengguna.php');
-    } else {
-        $_SESSION['pesan'] = showAlert('danger', 'Gagal Menghapus Pengguna');
-        header('location:../view/admin/daftarPengguna.php');
-    }
-}
-
-if (isset($_POST['editProfileAdmin'])) {
-
-    $id = $_POST['idAdmin'];
-    $username =  $_POST['username'];
-    $oldPassword =  $_POST['oldPassword'];
-    $newPassword =  $_POST['newpassword'];
-    $confirmPassword =  $_POST['confirmPassword'];
-    $telepon =  $_POST['telepon'];
-    $nama =  $_POST['nama'];
-    // $level = mysqli_real_escape_string($conn, $_POST['level']);
-
-
-    $pwSql = mysqli_query($conn, "select * from tabel_pengguna where id = '$id' ");
-    $dataPw = mysqli_fetch_assoc($pwSql);
-    // var_dump($dataPw);
-    // var_dump($_POST);
-    if (!empty($oldPassword)) {
-        if ($newPassword != $confirmPassword) {
-            $_SESSION['pesan'] = showAlert('danger', 'Password Baru Tidak Sama !');
-            header('location:../view/admin/profile/viewProfile.php');
-        } else {
-            if (password_verify($oldPassword, $dataPw['password'])) {
-                $securePassword = password_hash($newPassword, PASSWORD_DEFAULT);
-                // echo $securePassword;
-                $sql = "UPDATE `tabel_pengguna` SET `nama`='$nama',`telepon`='$telepon',`username`='$username',`password`='$securePassword' WHERE `id` = '$id'";
-                $query = mysqli_query($conn, $sql);
-
-                if ($query) {
-                    // $_SESSION['tambahSukses'] = true;
-                    $_SESSION['pesan'] = showAlert('success', 'Berhasil Mengupdate Profile');
-                    header('location:../view/admin/profile/viewProfile.php');
-                } else {
-                    // $_SESSION['tambahGagal'] = true;
-                    $_SESSION['pesan'] = showAlert('danger', 'Gagal Mengupdate Profile');
-                    header('location:../view/admin/profile/viewProfile.php');
-                }
-            } else {
-                $_SESSION['pesan'] = showAlert('danger', 'Password Lama Anda Salah ! Gagal Mengupdate Profile');
-                header('location:../view/admin/profile/viewProfile.php');
-            }
-        }
-    } else {
-        // echo $securePassword;
-        $sql = "UPDATE `tabel_pengguna` SET `nama`='$nama',`telepon`='$telepon',`username`='$username' WHERE `id` = '$id'";
-        $query = mysqli_query($conn, $sql);
-
-        if ($query) {
-            // $_SESSION['tambahSukses'] = true;
-            $_SESSION['pesan'] = showAlert('success', 'Berhasil Mengupdate Profile');
-            header('location:../view/admin/profile/viewProfile.php');
-        } else {
-            // $_SESSION['tambahGagal'] = true;
-            $_SESSION['pesan'] = showAlert('danger', 'Gagal Mengupdate Profile');
-            header('location:../view/admin/profile/viewProfile.php');
-        }
-    }
-}
-
 // User Action
 
+// fitur membuat pesanan user
 if (isset($_POST['tambahPesananUser'])) {
     $username =  $_POST['username'];
     $telepon =  $_POST['telepon'];
@@ -307,7 +244,7 @@ if (isset($_POST['tambahPesananUser'])) {
 
     // var_dump($_POST);
 
-    $sql = "INSERT INTO `tabel_pesanan`(`id`, `username`, `telepon`, `alamat`, `nama_paket`, `berat`, `harga`, `status`, `tanggal`) VALUES (NULL,'$username','$telepon','$alamat','$paket',NULL,NULL, 'Belum diproses' ,'$tanggal')";
+    $sql = "INSERT INTO `tabel_pesanan`(`id`, `username`, `telepon`, `alamat`, `nama_paket`, `berat`, `harga`, `status`, `tanggal`) VALUES (NULL,'$username','$telepon','$alamat','$paket',NULL,NULL, 'Pending' ,'$tanggal')";
     $query = mysqli_query($conn, $sql);
 
     if ($query) {
@@ -321,6 +258,7 @@ if (isset($_POST['tambahPesananUser'])) {
     }
 }
 
+// fitur menghapus / membatalkan pesanan user berdasarkan id pesanan
 if (isset($_GET['deletePesananUser'])) {
     $id = $_GET['id'];
     $sql = "delete from tabel_pesanan where id ='$id'";
@@ -333,6 +271,8 @@ if (isset($_GET['deletePesananUser'])) {
         header('location:../view/user/daftarPesanan.php');
     }
 }
+
+// fitur mengupdate status pesanan user menjadi permintaan pengantaran
 if (isset($_GET['antarPesananUser'])) {
     $id = $_GET['id'];
     $sql = "UPDATE `tabel_pesanan` SET status = 'Permintaan pengantaran' WHERE id = '$id'";
@@ -345,6 +285,8 @@ if (isset($_GET['antarPesananUser'])) {
         header('location:../view/user/daftarPesanan.php');
     }
 }
+
+// fitur konfirmasi penyelesiaan pesanan user 
 if (isset($_GET['konfirmasiPesananUser'])) {
     $id = $_GET['id'];
     $sql = "UPDATE `tabel_pesanan` SET status = 'Selesai' WHERE id = '$id'";
@@ -359,71 +301,8 @@ if (isset($_GET['konfirmasiPesananUser'])) {
 }
 
 
-if (isset($_POST['editProfileUser'])) {
 
-    $id = $_POST['idUser'];
-    $username =  $_POST['username'];
-    $oldPassword =  $_POST['oldPassword'];
-    $newPassword =  $_POST['newpassword'];
-    $confirmPassword =  $_POST['confirmPassword'];
-    $telepon =  $_POST['telepon'];
-    $nama =  $_POST['nama'];
-
-
-    $pwSql = mysqli_query($conn, "select * from tabel_pengguna where id = '$id' ");
-    $dataPw = mysqli_fetch_assoc($pwSql);
-    // var_dump($dataPw);
-    // var_dump($_POST);
-
-    if (!empty($oldPassword)) {
-        if ($newPassword != $confirmPassword) {
-            $_SESSION['pesan'] = showAlert('danger', 'Password Baru Tidak Sama !');
-            header('location:../view/user/profile/viewProfile.php');
-        } else {
-            if (password_verify($oldPassword, $dataPw['password'])) {
-                $securePassword = password_hash($newPassword, PASSWORD_DEFAULT);
-                // echo $securePassword;
-                $sql = "UPDATE `tabel_pengguna` SET `nama`='$nama',`telepon`='$telepon',`username`='$username',`password`='$securePassword' WHERE `id` = '$id'";
-                $query = mysqli_query($conn, $sql);
-
-                if ($query) {
-                    // $_SESSION['tambahSukses'] = true;
-                    $_SESSION['pesan'] = showAlert('success', 'Berhasil Mengupdate Profile');
-                    header('location:../view/user/profile/viewProfile.php');
-                } else {
-                    // $_SESSION['tambahGagal'] = true;
-                    $_SESSION['pesan'] = showAlert('danger', 'Gagal Mengupdate Profile');
-                    header('location:../view/user/profile/viewProfile.php');
-                }
-            } else {
-                $_SESSION['pesan'] = showAlert('danger', 'Password Lama Anda Salah ! Gagal Mengupdate Profile');
-                header('location:../view/user/profile/viewProfile.php');
-            }
-        }
-    } else {
-        // echo $securePassword;
-        $sql = "UPDATE `tabel_pengguna` SET `nama`='$nama',`telepon`='$telepon',`username`='$username' WHERE `id` = '$id'";
-        $query = mysqli_query($conn, $sql);
-
-        if ($query) {
-            // $_SESSION['tambahSukses'] = true;
-            $_SESSION['pesan'] = showAlert('success', 'Berhasil Mengupdate Profile');
-            header('location:../view/user/profile/viewProfile.php');
-        } else {
-            // $_SESSION['tambahGagal'] = true;
-            $_SESSION['pesan'] = showAlert('danger', 'Gagal Mengupdate Profile');
-            header('location:../view/user/profile/viewProfile.php');
-        }
-    }
-}
-
-
-
-
-
-
-
-
+// fitur Logout
 if (isset($_GET['logout'])) {
     unset($_SESSION);
     session_destroy();
