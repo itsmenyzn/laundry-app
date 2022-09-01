@@ -1,0 +1,50 @@
+html,body {
+  scroll-behavior: smooth;
+}
+/* Login Img Styling */
+
+.bg-login-image {
+    background: url('../img/loginImg.jpg') !important;
+    background-position: -90px -1px !important;
+    background-size: cover !important;
+  }
+
+  .marginTopLogin {
+    margin-top: 100px;
+  }
+
+  /* Navbar Style */
+  .navbar-expand-lg {
+    /* height: 65px !important;
+    background:transparent !important; */
+    background-color: red !important;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px !important;
+}
+
+/* Section Main */
+
+#sectionMain {
+  margin-top: 80px !important;
+}
+
+.textMain {
+  line-height: 35px !important;
+  margin: auto 0;
+}
+
+  /* Laundri Service Section */
+#sectionServices {
+  margin-top: 220px !important;
+  margin-bottom: 280px !important;
+}
+  .cardServices {
+    background-color: lightblue !important; 
+  }
+
+  .cardContact {
+    background-color: skyblue !important;
+  }
+
+  .textWhite {
+    color: white;
+  }
