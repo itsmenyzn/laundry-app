@@ -261,7 +261,7 @@ if (isset($_POST['tambahPesananUser'])) {
 // fitur menghapus / membatalkan pesanan user berdasarkan id pesanan
 if (isset($_GET['deletePesananUser'])) {
     $id = $_GET['id'];
-    $sql = "delete from tabel_pesanan where id ='$id'";
+    $sql = "UPDATE `tabel_pesanan` SET status = 'Batal' WHERE id = '$id'";
     $query = mysqli_query($conn, $sql);
     if ($query) {
         $_SESSION['pesan'] = showAlert('success', 'Berhasil Membatalkan Pesanan');

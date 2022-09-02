@@ -278,6 +278,10 @@ $row = mysqli_fetch_assoc($query);
                                                             echo  'selected';
                                                         }  ?> value="Selesai">Selesai
                                                 <option>
+                                                <option <?php if ($row['status'] === 'Batal') {
+                                                            echo  'selected';
+                                                        }  ?> value="Batal">Batal
+                                                <option>
                                             </select>
                                         </div>
                                     </div>

@@ -1,6 +1,6 @@
 <?php
 
-include 'action/connection/koneksi.php';
+include '../connection/koneksi.php';
 session_start();
 
 ?>
@@ -17,12 +17,12 @@ session_start();
     <title>Laundry App - Register</title>
 
     <!-- Custom fonts for this template-->
-    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
 
     <!-- Custom styles for this template-->
-    <link href="assets/css/sb-admin-2.min.css" rel="stylesheet" />
+    <link href="../../assets/css/sb-admin-2.min.css" rel="stylesheet" />
 </head>
 
 <body class="bg-gradient-primary">
@@ -44,7 +44,7 @@ session_start();
                                         unset($_SESSION['pesan']);
                                         unset($_SESSION['statusRegister']);
                                     } ?>
-                                    <form class="user" action="action/function.php" method="post">
+                                    <form class="user" action="../function.php" method="post">
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
@@ -87,15 +87,15 @@ session_start();
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="assets/js/sb-admin-2.min.js"></script>
+    <script src="../../assets/js/sb-admin-2.min.js"></script>
 </body>
 
 </html>

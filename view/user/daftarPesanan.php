@@ -153,7 +153,7 @@ if (isset($_SESSION['isLoginUser'])) {
                                                 <td><?= $row['harga'] ?></td>
                                                 <td><?= $row['status'] ?></td>
                                                 <td><?= $row['tanggal'] ?></td>
-                                                <?php if ($row['status'] == 'Belum diproses') { ?>
+                                                <?php if ($row['status'] == 'Belum diproses' || $row['status'] == 'Pending') { ?>
                                                     <td class="d-flex justify-content-between ">
                                                         <a class="btn btn-danger btn-block btn-md" href="#" data-toggle="modal" data-target="#deleteModal">
                                                             Batal
