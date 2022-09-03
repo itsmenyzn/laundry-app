@@ -16,8 +16,8 @@ function showAlert($type, $msg)
 
 // fitur login
 if (isset($_POST['login'])) {
-    $username =  $_POST['username'];
-    $password =  $_POST['password'];
+    $username =  mysqli_real_escape_string($conn, $_POST['username']);
+    $password =  mysqli_real_escape_string($conn, $_POST['password']);
     $sql =  "SELECT * FROM tabel_pengguna WHERE username='$username'";
     $query = mysqli_query($conn, $sql);
     session_start();

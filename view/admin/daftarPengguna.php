@@ -194,7 +194,7 @@ if (isset($_SESSION['isLoginUser'])) {
                                             <th>Nama</th>
                                             <th>Telepon</th>
                                             <th>Level</th>
-                                            <th class="text-center">Aksi</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -219,14 +219,6 @@ if (isset($_SESSION['isLoginUser'])) {
                                                 <td><?= $row['nama'] ?></td>
                                                 <td><?= $row['telepon'] ?></td>
                                                 <td><?= $row['level'] ?></td>
-                                                <td class="d-flex justify-content-between ">
-                                                    <a href="../../view/admin/editPengguna.php?id= <?= $row['id'] ?>" class=" btn btn-info btn-circle btn-md">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <a class="btn btn-danger btn-circle btn-md" href="#" data-toggle="modal" data-target="#deleteModal">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
-                                                </td>
                                                 <!-- <td>
                                                     
                                                 </td> -->
