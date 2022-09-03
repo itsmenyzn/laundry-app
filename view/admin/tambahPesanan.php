@@ -180,6 +180,10 @@ if (isset($_SESSION['isLoginUser'])) {
 
                     <div class="card shadow my-3 col-lg-11">
                         <div class="card-body">
+                            <?php if (isset($_SESSION['pesan'])) {
+                                echo $_SESSION['pesan'];
+                                unset($_SESSION['pesan']);
+                            } ?>
                             <form action="../../action/function.php" method="post">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -240,7 +244,7 @@ if (isset($_SESSION['isLoginUser'])) {
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" name="tambahPesanan" class="my-3  btn  btn-primary">Tambah Pesanan</button>
+                                <button type="submit" name="tambahPesanan" class="my-3  btn  btn-primary">Tambahs Pesanan</button>
                                 <button type="button" class="float-right my-3  btn  btn-info shadow-lg" onclick="location.reload()">Batal</button>
                         </div>
                         </form>

@@ -92,8 +92,8 @@ if (isset($_POST['tambahPesanan'])) {
     $harga =  $_POST['harga'];
     $tanggal =  $_POST['tanggal'];
 
+    $now = new DateTime(date('Y-m-d'));
     $date = new DateTime($tanggal);
-    $now = new DateTime();
 
     if ($date < $now) {
         $_SESSION['pesan'] = showAlert('danger', 'Gagal Membuat Pesanan ! Tanggal Tidak Valid');

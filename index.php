@@ -51,7 +51,7 @@ if (isset($_SESSION['isLoginUser'])) {
         </button>
         <div class="collapse navbar-collapse " id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link mr-3" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -97,11 +97,14 @@ if (isset($_SESSION['isLoginUser'])) {
             <div class="col-lg-6 textMain">
                 <h3><b>Bali Laundry</b></h3>
                 <p>Kami Bergerak Dibidang Usaha Jasa Binatu / Laundry Di Wilayah Denpasar Bali Dan Sekitarnya, Yang Melayani Permintaan Jasa Laundry Baik Personal, Keluarga Serta Wisatawan. Kami Menawarkan Jasa Laundry Kiloan, Untuk Mempermudah Konsumen Serta Lebih Berhemat Dengan Kuantitas Pekerjaan Borongan.</p>
-                <p> <b><i>Find Us On</i></b>
-                    <a href="#"><img src="assets/img/instagram_icon.png" width="30px" height="30px" class="ml-3" alt=""></a>
-                    <a href="#"><img src="assets/img/facebook_icon.png" width="30px" height="30px" alt=""></a>
-                    <a href="#"><img src="assets/img/whatsapp_icon.png" width="30px" height="30px" alt=""></a>
-                </p>
+                <?php if ($user == '') { ?>
+                    <h5 class="my-3"><i><b>Anda Dapat Login / Daftar Dahulu untuk membuat Pesanan</b></i></h6>
+                    <?php } ?>
+                    <p> <b><i>Find Us On</i></b>
+                        <a href="#"><img src="assets/img/instagram_icon.png" width="30px" height="30px" class="ml-3" alt=""></a>
+                        <a href="#"><img src="assets/img/facebook_icon.png" width="30px" height="30px" alt=""></a>
+                        <a href="#"><img src="assets/img/whatsapp_icon.png" width="30px" height="30px" alt=""></a>
+                    </p>
             </div>
             <div class="col-lg-6">
                 <img src="assets/img/loginImg.jpg" class="shadow-lg" width="450px" height="350px" alt="">
@@ -114,50 +117,50 @@ if (isset($_SESSION['isLoginUser'])) {
         </center>
         <div class="row d-flex justify-content-between">
             <div class="col-lg-3">
-                <div class="card shadow ">
+                <div class="card shadow  mt-5">
+                    <img class="card-img-top rounded" src="assets/img/bannerReguler.png" alt="Card image cap">
                     <div class="card-body p-4">
                         <center>
-                            <img src="assets/img/express_service.png" class="img-fluid mt-2 mb-4 w-50 h-50" alt="">
+                            <!-- <img src="assets/img/bannerReguler.png" class="img-fluid mt-2 mb-4 w-50 h-50" alt=""> -->
                             <h5 class="mt-2 mb-4">Reguler</h5>
+                            <h5 class="mb-3">Cuci - Setrika - Lipat</h5>
+
+                        </center>
+                        <p>
+                            Jasa layanan laundry dengan kisaran harga Rp. 7.000 / kg untuk pengerjaan 2 hari wilayah Denpasar Bali dan sekitarnya, jasa terkait proses cuci, setrika, lipat hingga packing.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card shadow ">
+                    <img class="card-img-top rounded" src="assets/img/bannerSpecial.jpg" alt="Card image cap">
+                    <div class="card-body p-4">
+                        <center>
+                            <!-- <img src="assets/img/bannerReguler.png" class="img-fluid mt-2 mb-4 w-50 h-50" alt=""> -->
+                            <h5 class="mt-2 mb-4">Special</h5>
                             <h5 class="mb-3">Cuci - Setrika - Lipat - Pewangi</h5>
 
                         </center>
                         <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni
-                            fuga assumenda natus soluta aspernatur amet reprehenderit
-                            mollitia quis officiis perferendis?
+                            Jasa layanan laundry dengan kisaran harga Rp. 20.000 / kg untuk pengerjaan 3 jam wilayah Denpasar Bali dan sekitarnya, jasa terkait proses cuci, setrika, lipat, pewangi hingga packing.
                         </p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card shadow my-4 my-lg-0 ">
+                <div class="card shadow mt-4">
+                    <img class="card-img-top rounded" src="assets/img/bannerExpress.jpg" alt="Card image cap">
                     <div class="card-body p-4">
                         <center>
-                            <img src="assets/img/express_service.png" class="img-fluid mt-2 mb-4 w-50 h-50" alt="">
+                            <!-- <img src="assets/img/bannerReguler.png" class="img-fluid mt-2 mb-4 w-50 h-50" alt=""> -->
                             <h5 class="mt-2 mb-4">Express</h5>
                             <h5 class="mb-3">Cuci - Setrika - Lipat</h5>
+
                         </center>
                         <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni
-                            fuga assumenda natus soluta aspernatur amet reprehenderit
-                            mollitia quis officiis perferendis?
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card shadow ">
-                    <div class="card-body p-4">
-                        <center>
-                            <img src="assets/img/express_service.png" class="img-fluid mt-2 mb-4 w-50 h-50" alt="">
-                            <h5 class="mt-2 mb-4">Spesial</h5>
-                            <h5 class="mb-3">Cuci - Setrika - Lipat</h5>
-                        </center>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni
-                            fuga assumenda natus soluta aspernatur amet reprehenderit
-                            mollitia quis officiis perferendis?
+
+                            Jasa layanan laundry dengan kisaran harga Rp. 10.000 / kg untuk pengerjaan 1 hari atau 24 jam wilayah Denpasar Bali dan sekitarnya, jasa terkait proses cuci, setrika, lipat, hingga packing.
                         </p>
                     </div>
                 </div>
