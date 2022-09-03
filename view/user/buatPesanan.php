@@ -100,7 +100,7 @@ if (isset($_SESSION['isLoginUser'])) {
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Tambah Pesanan</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Buat Pesanan</h1>
 
                     <div class="card shadow my-3 col-lg-11">
                         <div class="card-body">
@@ -108,9 +108,15 @@ if (isset($_SESSION['isLoginUser'])) {
                             <a href="../../index.php" class="mb-3 btn btn-primary btn-circle btn-lg">
                                 <i class="fas fa-angle-left fa-lg"></i>
                             </a>
+                            <?php if (isset($_SESSION['pesan'])) {
+                                echo $_SESSION['pesan'];
+                                unset($_SESSION['pesan']);
+                            } ?>
 
                             <form action="../../action/function.php" method="post">
+
                                 <div class="row">
+
                                     <div class="col-lg-6">
                                         <div class="form-group w-75">
                                             <label for="">Username</label>

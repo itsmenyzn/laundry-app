@@ -243,18 +243,25 @@ if (isset($_POST['tambahPesananUser'])) {
     $tanggal =  $_POST['tanggal'];
 
     // var_dump($_POST);
+    $now = new DateTime(date('Y-m-d'));
+    $date = new DateTime($tanggal);
 
-    $sql = "INSERT INTO `tabel_pesanan`(`id`, `username`, `telepon`, `alamat`, `nama_paket`, `berat`, `harga`, `status`, `tanggal`) VALUES (NULL,'$username','$telepon','$alamat','$paket',NULL,NULL, 'Pending' ,'$tanggal')";
-    $query = mysqli_query($conn, $sql);
-
-    if ($query) {
-        // $_SESSION['tambahSukses'] = true;
-        $_SESSION['pesan'] = showAlert('success', 'Berhasil Menambah Pesanan');
-        header('location:../view/user/daftarPesanan.php');
+    if ($date < $now) {
+        $_SESSION['pesan'] = showAlert('danger', 'Gagal Membuat Pesanan ! Tanggal Pemesanan Tidak Valid');
+        header('location:../view/user/buatPesanan.php');
     } else {
-        // $_SESSION['tambahGagal'] = true;
-        $_SESSION['pesan'] = showAlert('danger', 'Gagal Menambah Pesanan');
-        header('location:../view/user/daftarPesanan.php');
+        $sql = "INSERT INTO `tabel_pesanan`(`id`, `username`, `telepon`, `alamat`, `nama_paket`, `berat`, `harga`, `status`, `tanggal`) VALUES (NULL,'$username','$telepon','$alamat','$paket',NULL,NULL, 'Pending' ,'$tanggal')";
+        $query = mysqli_query($conn, $sql);
+
+        if ($query) {
+            // $_SESSION['tambahSukses'] = true;
+            $_SESSION['pesan'] = showAlert('success', 'Berhasil Menambah Pesanan');
+            header('location:../view/user/daftarPesanan.php');
+        } else {
+            // $_SESSION['tambahGagal'] = true;
+            $_SESSION['pesan'] = showAlert('danger', 'Gagal Menambah Pesanan');
+            header('location:../view/user/daftarPesanan.php');
+        }
     }
 }
 

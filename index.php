@@ -33,11 +33,59 @@ if (isset($_SESSION['isLoginUser'])) {
     <!-- Custom styles for this template-->
     <link href="assets/css/sb-admin-2.min.css" rel="stylesheet" />
     <style>
+        .marginFooter {
+            margin-top: 150px !important;
+        }
+
+        .blackFont {
+            color: black !important;
+        }
+
+        .spaceLine {
+            line-height: 30px !important;
+        }
+
         .mapouter {
             position: relative;
             text-align: right;
             height: 100px;
             width: 100px;
+        }
+
+        .navbar-light {
+            background-color: white !important;
+        }
+
+        #sectionContact>div>div:nth-child(1) {
+            color: black !important;
+            font-weight: bold !important;
+        }
+
+        #sectionContact>div>div:nth-child(1)>div.text-center>table>tbody {
+            color: black !important;
+            font-weight: bold !important;
+        }
+
+        #sectionContact>div>div:nth-child(2) {
+            color: black !important;
+            font-weight: bold !important;
+        }
+
+        .boxShadowCard1 {
+            box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+        }
+
+        .boxShadowCard2 {
+            box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+        }
+
+        .boxShadowCard3 {
+            box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+        }
+
+        .boxShadowImg {
+            box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+
         }
     </style>
 </head>
@@ -95,7 +143,7 @@ if (isset($_SESSION['isLoginUser'])) {
         } ?>
         <div class="row">
             <div class="col-lg-6 textMain">
-                <h3><b>Bali Laundry</b></h3>
+                <h3 class="blackFont"><b>Bali Laundry</b></h3>
                 <p>Kami Bergerak Dibidang Usaha Jasa Binatu / Laundry Di Wilayah Denpasar Bali Dan Sekitarnya, Yang Melayani Permintaan Jasa Laundry Baik Personal, Keluarga Serta Wisatawan. Kami Menawarkan Jasa Laundry Kiloan, Untuk Mempermudah Konsumen Serta Lebih Berhemat Dengan Kuantitas Pekerjaan Borongan.</p>
                 <?php if ($user == '') { ?>
                     <h5 class="my-3"><i><b>Anda Dapat Login / Daftar Dahulu untuk membuat Pesanan</b></i></h6>
@@ -107,7 +155,7 @@ if (isset($_SESSION['isLoginUser'])) {
                     </p>
             </div>
             <div class="col-lg-6">
-                <img src="assets/img/loginImg.jpg" class="shadow-lg" width="450px" height="350px" alt="">
+                <img src="assets/img/loginImg.jpg" class="boxShadowImg" width="450px" height="350px" alt="">
             </div>
         </div>
     </div>
@@ -117,48 +165,48 @@ if (isset($_SESSION['isLoginUser'])) {
         </center>
         <div class="row d-flex justify-content-between">
             <div class="col-lg-3">
-                <div class="card shadow  mt-5">
+                <div class="card boxShadowCard1  mt-5">
                     <img class="card-img-top rounded" src="assets/img/bannerReguler.png" alt="Card image cap">
-                    <div class="card-body p-4">
+                    <div class="card-body p-4 blackFont">
                         <center>
                             <!-- <img src="assets/img/bannerReguler.png" class="img-fluid mt-2 mb-4 w-50 h-50" alt=""> -->
-                            <h5 class="mt-2 mb-4">Reguler</h5>
+                            <h5 class="mt-2 mb-4 font-weight-bold">Reguler</h5>
                             <h5 class="mb-3">Cuci - Setrika - Lipat</h5>
 
                         </center>
-                        <p>
+                        <p class="spaceLine">
                             Jasa layanan laundry dengan kisaran harga Rp. 7.000 / kg untuk pengerjaan 2 hari wilayah Denpasar Bali dan sekitarnya, jasa terkait proses cuci, setrika, lipat hingga packing.
                         </p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card shadow ">
+                <div class="card boxShadowCard2 ">
                     <img class="card-img-top rounded" src="assets/img/bannerSpecial.jpg" alt="Card image cap">
-                    <div class="card-body p-4">
+                    <div class="card-body p-4 blackFont">
                         <center>
-                            <!-- <img src="assets/img/bannerReguler.png" class="img-fluid mt-2 mb-4 w-50 h-50" alt=""> -->
-                            <h5 class="mt-2 mb-4">Special</h5>
+                            <!-- <img src="assets/img/bannerReguler.png" class="img-fluid mt-2 mb-4 font-weight-bold w-50 h-50" alt=""> -->
+                            <h5 class="mt-2 mb-4 font-weight-bold">Special</h5>
                             <h5 class="mb-3">Cuci - Setrika - Lipat - Pewangi</h5>
 
                         </center>
-                        <p>
+                        <p class="spaceLine">
                             Jasa layanan laundry dengan kisaran harga Rp. 20.000 / kg untuk pengerjaan 3 jam wilayah Denpasar Bali dan sekitarnya, jasa terkait proses cuci, setrika, lipat, pewangi hingga packing.
                         </p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="card shadow mt-4">
+                <div class="card boxShadowCard3 mt-4">
                     <img class="card-img-top rounded" src="assets/img/bannerExpress.jpg" alt="Card image cap">
-                    <div class="card-body p-4">
+                    <div class="card-body p-4 blackFont">
                         <center>
-                            <!-- <img src="assets/img/bannerReguler.png" class="img-fluid mt-2 mb-4 w-50 h-50" alt=""> -->
-                            <h5 class="mt-2 mb-4">Express</h5>
+                            <!-- <img src="assets/img/bannerReguler.png" class="img-fluid mt-2 mb-4 font-weight-bold w-50 h-50" alt=""> -->
+                            <h5 class="mt-2 mb-4 font-weight-bold">Express</h5>
                             <h5 class="mb-3">Cuci - Setrika - Lipat</h5>
 
                         </center>
-                        <p>
+                        <p class="spaceLine">
 
                             Jasa layanan laundry dengan kisaran harga Rp. 10.000 / kg untuk pengerjaan 1 hari atau 24 jam wilayah Denpasar Bali dan sekitarnya, jasa terkait proses cuci, setrika, lipat, hingga packing.
                         </p>
@@ -218,6 +266,18 @@ if (isset($_SESSION['isLoginUser'])) {
         </div>
     </div>
 
+
+
+    <footer>
+        <div class="container-fluid marginFooter">
+            <div class="row shadow-lg">
+                <div class="col-lg-12">
+                    <div class="fs-5 py-3 text-center footerText">&#169 2022 Bali Laundry </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -239,6 +299,8 @@ if (isset($_SESSION['isLoginUser'])) {
             </div>
         </div>
     </div>
+
+
 
 
 
