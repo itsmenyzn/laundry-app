@@ -16,6 +16,7 @@ function showAlert($type, $msg)
 
 // fitur login
 if (isset($_POST['login'])) {
+    // function untuk menghindari sql injection
     $username =  mysqli_real_escape_string($conn, $_POST['username']);
     $password =  mysqli_real_escape_string($conn, $_POST['password']);
     $sql =  "SELECT * FROM tabel_pengguna WHERE username='$username'";
@@ -55,8 +56,6 @@ if (isset($_POST['daftarUser'])) {
     $postPassword =  $_POST['password'];
     $telepon =  $_POST['telepon'];
     $password = password_hash($postPassword, PASSWORD_DEFAULT);
-
-
     $checkUsername = mysqli_query($conn, "SELECT * FROM tabel_pengguna WHERE username = '$username'");
 
     if (mysqli_num_rows($checkUsername) >= 1) {
@@ -126,7 +125,7 @@ if (isset($_POST['editPesanan'])) {
     $status =  $_POST['status'];
     $id = $_POST['idPesanan'];
 
-    $sql = "UPDATE `tabel_pesanan` SET `id`='$id',`username`='$username',`telepon`='$telepon',`alamat`='$alamat',`nama_paket`='$paket',`berat`='$berat',`harga`='$harga',`status`='$status',`tanggal`='$tanggal' WHERE id = '$id'";
+    $sql = "UPDATE `tabel_pesanan` SET `username`='$username',`telepon`='$telepon',`alamat`='$alamat',`nama_paket`='$paket',`berat`='$berat',`harga`='$harga',`status`='$status',`tanggal`='$tanggal' WHERE id = '$id'";
     $query = mysqli_query($conn, $sql);
 
     if ($query) {
@@ -268,7 +267,8 @@ if (isset($_POST['tambahPesananUser'])) {
 // fitur menghapus / membatalkan pesanan user berdasarkan id pesanan
 if (isset($_GET['deletePesananUser'])) {
     $id = $_GET['id'];
-    $sql = "UPDATE `tabel_pesanan` SET status = 'Batal' WHERE id = '$id'";
+
+    $sql = "UPDATE `tabel_pesanan` SET `status`='Batal' WHERE id = '$id' ";
     $query = mysqli_query($conn, $sql);
     if ($query) {
         $_SESSION['pesan'] = showAlert('success', 'Berhasil Membatalkan Pesanan');
@@ -313,5 +313,5 @@ if (isset($_GET['konfirmasiPesananUser'])) {
 if (isset($_GET['logout'])) {
     unset($_SESSION);
     session_destroy();
-    header('location:auth/login.php');
+    header('location:../index.php');
 }

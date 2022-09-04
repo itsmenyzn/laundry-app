@@ -72,19 +72,19 @@ if (isset($_SESSION['isLoginUser'])) {
         }
 
         .boxShadowCard1 {
-            box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+            box-shadow: rgb(88, 0, 255) -5px 5px, rgb(0, 150, 255) -10px 10px, rgb(0, 215, 255) -15px 15px, rgb(114, 255, 255) -20px 20px, rgb(134, 247, 247) -25px 25px;
         }
 
         .boxShadowCard2 {
-            box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+            box-shadow: rgb(88, 0, 255) 0px 5px, rgb(0, 150, 255) 0px 10px, rgb(0, 215, 255) 0px 15px, rgb(114, 255, 255) 0px 20px, rgb(134, 247, 247) 0px 25px;
         }
 
         .boxShadowCard3 {
-            box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+            box-shadow: rgb(88, 0, 255) 5px 5px, rgb(0, 150, 255) 10px 10px, rgb(0, 215, 255) 15px 15px, rgb(114, 255, 255) 20px 20px, rgb(134, 247, 247) 25px 25px;
         }
 
         .boxShadowImg {
-            box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+            box-shadow: rgb(88, 0, 255) 5px 5px, rgb(0, 150, 255) 10px 10px, rgb(0, 215, 255) 15px 15px, rgb(114, 255, 255) 20px 20px, rgb(134, 247, 247) 25px 25px;
 
         }
     </style>
@@ -269,8 +269,8 @@ if (isset($_SESSION['isLoginUser'])) {
 
 
     <footer>
-        <div class="container-fluid marginFooter">
-            <div class="row shadow-lg">
+        <div class="container-fluid marginFooter  ">
+            <div class=" row shadow-lg">
                 <div class="col-lg-12">
                     <div class="fs-5 py-3 text-center footerText">&#169 2022 Bali Laundry </div>
                 </div>
