@@ -142,7 +142,9 @@ if (isset($_SESSION['isLoginUser'])) {
                                         }
                                         $no = 1;
                                         foreach ($data as $row) :
+
                                         ?>
+
                                             <tr>
                                                 <td><?= $no; ?></td>
                                                 <td><?= $row['username'] ?></td>
@@ -155,19 +157,19 @@ if (isset($_SESSION['isLoginUser'])) {
                                                 <td><?= $row['tanggal'] ?></td>
                                                 <?php if ($row['status'] == 'Belum diproses' || $row['status'] == 'Pending') { ?>
                                                     <td class="d-flex justify-content-between ">
-                                                        <a class="btn btn-danger btn-block btn-md" href="#" data-toggle="modal" data-target="#deleteModal">
+                                                        <a class="btn btn-danger btn-block btn-md" href="../../action/function.php?deletePesananUser=1&id=<?= $row['id'] ?>" onclick="return confirm('Apakah Anda Yakin Ingin Membatalkan Pesanan ?')">
                                                             Batal
                                                         </a>
                                                     </td>
                                                 <?php } else if ($row['status'] == 'Selesai diproses') { ?>
                                                     <td class="d-flex justify-content-between ">
-                                                        <a class="btn btn-info btn-block btn-md" href="#" data-toggle="modal" data-target="#antarModal">
+                                                        <a class="btn btn-info btn-block btn-md" href="../../action/function.php?antarPesananUser=1&id=<?= $row['id'] ?>" onclick="return confirm('Apakah Anda Yakin Ingin Pesanan Diantar ?')">
                                                             Antar
                                                         </a>
                                                     </td>
                                                 <?php } else if ($row['status'] == 'Sedang diantar') { ?>
                                                     <td class="d-flex justify-content-between ">
-                                                        <a class="btn btn-primary btn-block btn-md" href="#" data-toggle="modal" data-target="#konfirmasiModal">
+                                                        <a class="btn btn-primary btn-block btn-md" href="../../action/function.php?konfirmasiPesananUser=1&id=<?= $row['id'] ?>" onclick="return confirm('Apakah Anda Sudah Menerima dan Membayar Pesanan ?')">
                                                             Konfirmasi Pesanan
                                                         </a>
                                                     </td>
@@ -187,8 +189,6 @@ if (isset($_SESSION['isLoginUser'])) {
                                                     </td>
 
                                                 <?php } ?>
-
-
                                             </tr>
                                         <?php
                                             $no++;
@@ -226,70 +226,6 @@ if (isset($_SESSION['isLoginUser'])) {
                         Batal
                     </button>
                     <a class="btn btn-primary" href="../../action/function.php?logout=1">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Anda Yakin Ingin Membatalkan Pesanan Ini ?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Klik Ya Jika Ingin Membatalkan Pesanan
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">
-                        Batal
-                    </button>
-                    <a href="../../action/function.php?deletePesananUser=1&id=<?= $row['id'] ?>" class="btn btn-danger"> Hapus </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="antarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Anda Yakin Mengkonfirmasi Pengantaran Pesanan Ini ?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Klik Ya Jika Ingin Pesanan diantar dan Pastikan Anda Sudah Menyiapkan Uang Pembayaran
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">
-                        Batal
-                    </button>
-                    <a href="../../action/function.php?antarPesananUser=1&id=<?= $row['id'] ?>" class="btn btn-info"> Antar </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="konfirmasiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Anda Yakin Mengkonfirmasi Bahwa Pesanan Telah Selesai Ini ?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Klik Selesai jika pesanan sudah anda terima dan bayarkan
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">
-                        Batal
-                    </button>
-                    <a href="../../action/function.php?konfirmasiPesananUser=1&id=<?= $row['id'] ?>" class="btn btn-info"> Selesai </a>
                 </div>
             </div>
         </div>
